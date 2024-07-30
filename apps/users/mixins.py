@@ -1,6 +1,7 @@
 from rest_framework import status
 import datetime
-from config.helpers.error_response import error_response
+from django.contrib import messages
+#from config.helpers.error_response import error_response
 from .models import User
 
 #add this mixin to the login required class
@@ -8,7 +9,7 @@ class CustomLoginRequiredMixin():
     
     def dispatch(self,request, *args, **kwargs):
         if 'Authorization' not in request.headers:
-            return error_response('Please set Auth-Token.', status.HTTP_401_UNAUTHORIZED)
+            return messages.error('Please set Auth-Token.', status.HTTP_401_UNAUTHORIZED)
         
         
         token = request.hearders['Authorization']

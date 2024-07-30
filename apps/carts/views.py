@@ -5,7 +5,7 @@ from rest_framework import generics, serializers, status
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework.response import Response
 from apps.carts.serializers import CartSerializer, CartUpdateSerializer, CartListSerializer
-from apps.orders.models import Product
+from apps.products.models import Item
 from .models import Cart
 from apps.users.mixins import CustomLoginRequiredMixin
 from apps.users.models import User

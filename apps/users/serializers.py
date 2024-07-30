@@ -34,13 +34,13 @@ class UserSignUpSerializer(serializers.ModelSerializer):
            if User.objects.filter(email=validate_data['email']).exists():
                raise serializers.ValidationError({'email':['This email is already taken.']})
         
-            validate_data['password'] = make_password(validate_data['password']) 
+           validate_data['password'] = make_password(validate_data['password']) 
             
             
-            validate_data['token'] = token_hex(30)   
-            validate_data['token_expires'] = datetime.datetime.now() + datetime.timedelta(days=7)
+           validate_data['token'] = token_hex(30)   
+           validate_data['token_expires'] = datetime.datetime.now() + datetime.timedelta(days=7)
             
-            return super().create(validate_data)
+           return super().create(validate_data)
             
 class UserSignInSerializer(serializers.ModelSerializer):
         name = serializers.CharField(read_only=True)
@@ -67,10 +67,10 @@ class UserSignInSerializer(serializers.ModelSerializer):
               user[0].save()
               
               #retuen user infornation
-            return user[0]
-        else:
+              return user[0]
+            else:
             #raise error
-            raise serializers.ValidationError({"error": "The password or email is incorrect."})
+              raise serializers.ValidationError({"error": "The password or email is incorrect."})
                
        
         
