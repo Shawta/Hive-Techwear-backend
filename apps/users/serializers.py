@@ -47,7 +47,7 @@ class UserSignInSerializer(serializers.ModelSerializer):
         email = serializers.EmailField()
         password = serializers.CharField(write_only=True)
         token = serializers.CharField(read_only=True)
-        token_expires_at = serializers.DateTimeField(read_only=True)
+        token_expires = serializers.DateTimeField(read_only=True)
         
         class Meta:
             model = User
